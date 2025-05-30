@@ -1,49 +1,67 @@
 package com.example.garage_car_app.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.garage_car_app.R;
 import com.example.garage_car_app.adapter.CarAdapter;
+import com.example.garage_car_app.model.AppDatabase;
 import com.example.garage_car_app.model.Car;
+import com.example.garage_car_app.model.CarDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
+import androidx.room.Room;
+
 import java.util.List;
 
 public class CarListActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewCars;
+    private RecyclerView recyclerView;
     private CarAdapter carAdapter;
     private List<Car> carList;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_list);
 
-        recyclerViewCars = findViewById(R.id.recyclerViewCars);
-        FloatingActionButton fabAddCar = findViewById(R.id.fabAddCar);
 
-        // Przykładowe dane
-        carList = new ArrayList<>();
-        carList.add(new Car(1, "Toyota", "Corolla", 2018));
-        carList.add(new Car(2, "Ford", "Focus", 2016));
-        carList.add(new Car(3, "BMW", "320i", 2020));
+        recyclerView = findViewById(R.id.recyclerViewCars);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        carAdapter = new CarAdapter(carList, car -> {
-            // Tu kliknięcie na samochód
+        // Inicjalizacja bazy danych i DAO
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "car_database").allowMainThreadQueries().build();
+        CarDao carDao = db.carDao();
+
+        // Pobranie listy aut z bazy danych
+        carList = carDao.getAllCars();
+
+        // Ustawienie adaptera
+        carAdapter = new CarAdapter(carList);
+        recyclerView.setAdapter(carAdapter);
+
+        // Obsługa przycisku "+"
+        FloatingActionButton fab = findViewById(R.id.fabAddCar);
+        fab.setOnClickListener(view -> {
+            Intent intent = new Intent(CarListActivity.this, AddCarActivity.class);
+            startActivity(intent);
         });
+    }
 
-        recyclerViewCars.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewCars.setAdapter(carAdapter);
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        fabAddCar.setOnClickListener(v -> {
-            // Tu dodamy akcję dodawania auta
-        });
+        // Odświeżenie listy po powrocie z AddCarActivity
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "car_database").allowMainThreadQueries().build();
+        CarDao carDao = db.carDao();
+
+        carList.clear();
+        carList.addAll(carDao.getAllCars());
+        carAdapter.notifyDataSetChanged();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.garage_car_app.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,19 +29,25 @@ public class CarListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_car_list);
 
 
-        recyclerView = findViewById(R.id.recyclerViewCars);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Inicjalizacja bazy danych i DAO
+
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "car_database").allowMainThreadQueries().build();
+                        AppDatabase.class, "car_db")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()  // tylko do testów, później async!
+                .build();
+
         CarDao carDao = db.carDao();
+
 
         // Pobranie listy aut z bazy danych
         carList = carDao.getAllCars();
 
         // Ustawienie adaptera
-        carAdapter = new CarAdapter(carList);
+        carAdapter = new CarAdapter(this, carList);
         recyclerView.setAdapter(carAdapter);
 
         // Obsługa przycisku "+"
@@ -57,7 +64,11 @@ public class CarListActivity extends AppCompatActivity {
 
         // Odświeżenie listy po powrocie z AddCarActivity
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "car_database").allowMainThreadQueries().build();
+                        AppDatabase.class, "car_database")
+                .fallbackToDestructiveMigration() // <--- to
+                .allowMainThreadQueries()
+                .build();
+
         CarDao carDao = db.carDao();
 
         carList.clear();

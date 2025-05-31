@@ -12,12 +12,14 @@ public class Car {
     private String brand;
     private String model;
     private int year;
+    public String registration;
 
     // Konstruktor
-    public Car(String brand, String model, int year) {
+    public Car(String brand, String model, int year, String registration) {
         this.brand = brand;
         this.model = model;
         this.year = year;
+        this.registration = registration;
     }
 
     // Gettery
@@ -36,6 +38,9 @@ public class Car {
     public int getYear() {
         return year;
     }
+    public String getRegistration() {
+        return registration;
+    }
 
     // Settery
     public void setId(int id) {
@@ -52,5 +57,8 @@ public class Car {
 
     public void setYear(int year) {
         this.year = year;
+    }
+    public void setRegistration(String registration) {
+        this.registration = registration;
     }
 }

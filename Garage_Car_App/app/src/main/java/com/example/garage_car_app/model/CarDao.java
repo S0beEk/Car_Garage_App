@@ -1,6 +1,7 @@
 package com.example.garage_car_app.model;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -14,4 +15,7 @@ public interface CarDao {
 
     @Query("SELECT * FROM Car")
     List<Car> getAllCars();
+
+    @Delete
+    void deleteCar(Car car); // <- DODAJ TO
 }

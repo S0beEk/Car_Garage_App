@@ -12,6 +12,19 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/edit_text_vin"
+            android:hint="Wprowadź VIN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_fetch_vin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
+            android:text="Pobierz dane z VIN"
+            android:textColor="#3F51B5" />
+        <EditText
             android:id="@+id/editTextBrand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

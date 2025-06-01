@@ -26,7 +26,7 @@
             android:name=".ui.CarDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <receiver android:name=".util.ReminderReceiver" />
-
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

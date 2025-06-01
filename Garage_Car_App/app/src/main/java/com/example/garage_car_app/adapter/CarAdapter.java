@@ -91,7 +91,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             textViewModel = itemView.findViewById(R.id.textViewModel);
             textViewYear = itemView.findViewById(R.id.textViewYear);
             textViewRegistration = itemView.findViewById(R.id.textViewRegistration);
-            btnDelete = itemView.findViewById(R.id.btnDelete); // Upewnij się, że masz ten przycisk w item_car.xml
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
     }
 }

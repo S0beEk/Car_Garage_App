@@ -1,4 +1,3 @@
-// InspectionDao.java
 package com.example.garage_car_app.model;
 
 import androidx.room.Dao;

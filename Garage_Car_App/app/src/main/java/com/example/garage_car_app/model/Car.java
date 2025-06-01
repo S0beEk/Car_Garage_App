@@ -14,7 +14,6 @@ public class Car {
     private int year;
     public String registration;
 
-    // Konstruktor
     public Car(String brand, String model, int year, String registration) {
         this.brand = brand;
         this.model = model;
@@ -22,7 +21,7 @@ public class Car {
         this.registration = registration;
     }
 
-    // Gettery
+
     public int getId() {
         return id;
     }
@@ -42,7 +41,7 @@ public class Car {
         return registration;
     }
 
-    // Settery
+
     public void setId(int id) {
         this.id = id;
     }

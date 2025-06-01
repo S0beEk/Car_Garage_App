@@ -6,6 +6,17 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9D9898"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Car Garage"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
         android:id="@+id/textViewBrand"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -45,12 +56,15 @@
         android:layout_height="wrap_content"
         android:text="Data naprawy"
         android:textSize="14sp"/>
-    <ImageButton
+
+    <Button
         android:id="@+id/btnDelete"
-        android:src="@android:drawable/ic_delete"
-        android:contentDescription="Usuń samochód"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless" />
+        android:backgroundTint="#836E6E"
+        android:contentDescription="Usuń samochód"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Usuń Pojazd"
+        android:textColor="#FA0000" />
 
 </LinearLayout>

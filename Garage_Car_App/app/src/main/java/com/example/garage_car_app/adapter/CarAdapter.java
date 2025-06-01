@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -82,7 +83,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
     public static class CarViewHolder extends RecyclerView.ViewHolder {
         TextView textViewBrand, textViewModel, textViewYear, textViewRegistration;
-        ImageButton btnDelete;
+        Button btnDelete;
 
         public CarViewHolder(@NonNull View itemView) {
             super(itemView);

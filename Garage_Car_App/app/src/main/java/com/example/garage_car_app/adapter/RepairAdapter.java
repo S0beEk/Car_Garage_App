@@ -1,4 +1,3 @@
-// RepairAdapter.java
 package com.example.garage_car_app.adapter;
 
 import android.view.LayoutInflater;
@@ -11,7 +10,7 @@ import com.example.garage_car_app.R;
 import com.example.garage_car_app.model.Repair;
 import java.util.List;
 
-public class RepairAdapter extends RecyclerView.Adapter<RepairAdapter.ViewHolder> {
+public class RepairAdapter extends RecyclerView.Adapter<RepairAdapter.RepairViewHolder> {
 
     private List<Repair> repairs;
 
@@ -21,16 +20,17 @@ public class RepairAdapter extends RecyclerView.Adapter<RepairAdapter.ViewHolder
 
     @NonNull
     @Override
-    public RepairAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RepairViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_repair, parent, false);
-        return new ViewHolder(view);
+        return new RepairViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RepairAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RepairViewHolder holder, int position) {
         Repair repair = repairs.get(position);
         holder.textDescription.setText(repair.description);
         holder.textDate.setText(repair.date);
+        holder.textCost.setText(String.format("%.2f zł", repair.cost));
     }
 
     @Override
@@ -38,13 +38,19 @@ public class RepairAdapter extends RecyclerView.Adapter<RepairAdapter.ViewHolder
         return repairs.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textDescription, textDate;
+    public void updateData(List<Repair> newRepairs) {
+        this.repairs = newRepairs;
+        notifyDataSetChanged();
+    }
 
-        ViewHolder(View itemView) {
+    static class RepairViewHolder extends RecyclerView.ViewHolder {
+        TextView textDescription, textDate, textCost;
+
+        public RepairViewHolder(@NonNull View itemView) {
             super(itemView);
             textDescription = itemView.findViewById(R.id.textRepairDescription);
             textDate = itemView.findViewById(R.id.textRepairDate);
+            textCost = itemView.findViewById(R.id.textRepairCost);
         }
     }
 }

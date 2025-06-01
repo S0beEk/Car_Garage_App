@@ -11,11 +11,18 @@ import java.util.List;
 public interface CarDao {
 
     @Insert
-    void insert(Car car);  // ← poprawna wersja
+    void insert(Car car);
+
+    @Query("SELECT * FROM car WHERE id = :carId")
+    Car getCarById(int carId);
 
     @Query("SELECT * FROM Car")
     List<Car> getAllCars();
 
     @Delete
-    void deleteCar(Car car); // <- DODAJ TO
+    void deleteCar(Car car);
+
+    @Query("DELETE FROM car WHERE registration = :registration")
+    void deleteCarByRegistration(String registration);
+
 }

@@ -1,65 +1,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="24dp">
 
-    <TextView android:id="@+id/textBrand"
-        android:textSize="20sp"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/textBrand"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp" />
 
-    <TextView android:id="@+id/textModel"
-        android:textSize="20sp"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/textModel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp" />
 
-    <TextView android:id="@+id/textYear"
-        android:textSize="20sp"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/textYear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp" />
 
-    <TextView android:id="@+id/textRegistration"
-        android:textSize="20sp"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/textRegistration"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp" />
+
     <TextView
         android:id="@+id/textRepairsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
         android:text="Naprawy"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerRepairs"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/buttonAddRepair"
+        android:text="Dodaj naprawę"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
+
 
     <TextView
         android:id="@+id/textInspectionsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
         android:text="Przeglądy"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerInspections"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="8dp"/>
-    <ImageButton
-        android:id="@+id/btnDelete"
-        android:src="@android:drawable/ic_menu_delete"
-        android:contentDescription="Usuń samochód"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless" />
+        android:layout_marginTop="8dp" />
+
 
 </LinearLayout>

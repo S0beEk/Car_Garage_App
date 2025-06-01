@@ -1,4 +1,3 @@
-// RepairDao.java
 package com.example.garage_car_app.model;
 
 import androidx.room.Dao;
@@ -9,9 +8,10 @@ import java.util.List;
 
 @Dao
 public interface RepairDao {
-    @Query("SELECT * FROM Repair WHERE carId = :carId")
-    List<Repair> getRepairsForCar(int carId);
 
     @Insert
     void insert(Repair repair);
+
+    @Query("SELECT * FROM Repair WHERE carId = :carId ORDER BY date DESC")
+    List<Repair> getRepairsForCar(int carId);
 }

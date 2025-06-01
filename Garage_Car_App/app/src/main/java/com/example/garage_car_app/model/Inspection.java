@@ -6,36 +6,26 @@ import androidx.room.ColumnInfo;
 
 @Entity
 public class Inspection {
-
     @PrimaryKey(autoGenerate = true)
     private int id;
-
-    private int carId; // pole musi mieć getter i setter z taką nazwą
-
-    private String type;
-
+    private int carId;
     private String date;
+    private String notes;
 
-    // publiczny konstruktor bez argumentów
-    public Inspection() {}
-
-    // opcjonalnie: konstruktor z parametrami (upewnij się, że nazwy argumentów pasują do nazw pól)
-    public Inspection(int carId, String type, String date) {
+    public Inspection(int carId, String date, String notes) {
         this.carId = carId;
-        this.type = type;
         this.date = date;
+        this.notes = notes;
     }
 
-    // getters and setters
     public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
     public int getCarId() { return carId; }
-    public void setCarId(int carId) { this.carId = carId; }
-
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
-
     public String getDate() { return date; }
+    public String getNotes() { return notes; }
+
+    public void setId(int id) { this.id = id; }
+    public void setCarId(int carId) { this.carId = carId; }
     public void setDate(String date) { this.date = date; }
+    public void setNotes(String notes) { this.notes = notes; }
 }
+

@@ -21,7 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.AddCarActivity" />
-        <activity android:name=".ui.CarDetailsActivity" />
+        <activity
+            android:name=".ui.CarDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
     </application>
 

@@ -75,6 +75,13 @@ public class CarDetailsActivity extends AppCompatActivity {
         Button buttonAddRepair = findViewById(R.id.buttonAddRepair);
         buttonAddRepair.setOnClickListener(view -> showAddRepairDialog());
 
+        Button buttonAddInspection = findViewById(R.id.buttonAddInspection);
+        buttonAddInspection.setOnClickListener(v -> showAddInspectionDialog());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
     }
     private void showAddRepairDialog() {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
@@ -108,5 +115,37 @@ public class CarDetailsActivity extends AppCompatActivity {
 
         dialog.show();
     }
+    private void showAddInspectionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Dodaj przegląd");
+
+        View view = getLayoutInflater().inflate(R.layout.dialog_add_inspection, null);
+        EditText editDate = view.findViewById(R.id.editInspectionDate);
+        EditText editNotes = view.findViewById(R.id.editInspectionNotes);
+
+        builder.setView(view);
+        builder.setPositiveButton("Zapisz", (dialog, which) -> {
+            String date = editDate.getText().toString();
+            String notes = editNotes.getText().toString();
+
+            if (!date.isEmpty()) {
+                Inspection inspection = new Inspection(carId, date, notes);
+                db.inspectionDao().insert(inspection);
+                List<Inspection> updated = db.inspectionDao().getInspectionsForCar(carId);
+                inspectionAdapter = new InspectionAdapter(updated);
+                recyclerInspections.setAdapter(inspectionAdapter);
+            } else {
+                Toast.makeText(this, "Data jest wymagana", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Anuluj", null);
+        builder.show();
+    }
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
 
 }

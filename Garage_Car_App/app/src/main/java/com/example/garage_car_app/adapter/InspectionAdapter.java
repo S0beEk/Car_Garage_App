@@ -13,40 +13,40 @@ import com.example.garage_car_app.model.Inspection;
 
 import java.util.List;
 
-public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.InspectionViewHolder> {
+public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.ViewHolder> {
+    private List<Inspection> inspectionList;
 
-    private List<Inspection> inspections;
-
-    public InspectionAdapter(List<Inspection> inspections) {
-        this.inspections = inspections;
+    public InspectionAdapter(List<Inspection> list) {
+        this.inspectionList = list;
     }
 
-    @NonNull
-    @Override
-    public InspectionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_inspection, parent, false);
-        return new InspectionViewHolder(view);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textDate, textNotes;
+
+        public ViewHolder(View view) {
+            super(view);
+            textDate = view.findViewById(R.id.textInspectionDate);
+            textNotes = view.findViewById(R.id.textInspectionNotes);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InspectionViewHolder holder, int position) {
-        Inspection inspection = inspections.get(position);
-        holder.textInspectionType.setText(inspection.getType());
-        holder.textInspectionDate.setText(inspection.getDate());
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_inspection, parent, false);
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Inspection inspection = inspectionList.get(position);
+        holder.textDate.setText("Data: " + inspection.getDate());
+        holder.textNotes.setText("Notatki: " + inspection.getNotes());
     }
 
     @Override
     public int getItemCount() {
-        return inspections.size();
-    }
-
-    static class InspectionViewHolder extends RecyclerView.ViewHolder {
-        TextView textInspectionType, textInspectionDate;
-
-        public InspectionViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textInspectionType = itemView.findViewById(R.id.textInspectionType);
-            textInspectionDate = itemView.findViewById(R.id.textInspectionDate);
-        }
+        return inspectionList.size();
     }
 }
+

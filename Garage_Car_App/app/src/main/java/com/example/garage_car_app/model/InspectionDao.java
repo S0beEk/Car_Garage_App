@@ -14,7 +14,7 @@ public interface InspectionDao {
     @Query("DELETE FROM inspection WHERE carId = :carId")
     void deleteInspectionsForCar(int carId);
 
-    @Query("SELECT * FROM inspection WHERE carId = :carId")
+    @Query("SELECT * FROM Inspection WHERE carId = :carId ORDER BY date DESC")
     List<Inspection> getInspectionsForCar(int carId);
 
     @Insert

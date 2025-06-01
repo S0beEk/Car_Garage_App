@@ -42,29 +42,15 @@
         android:text="Rejestracja: ABC123"
         android:textSize="16sp"
         android:paddingTop="4dp" />
-    <TextView
-        android:id="@+id/textRepairDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Opis naprawy"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/textRepairDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data naprawy"
-        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#836E6E"
+        android:backgroundTint="#F60303"
         android:contentDescription="Usuń samochód"
         android:fontFamily="sans-serif-condensed"
         android:text="Usuń Pojazd"
-        android:textColor="#FA0000" />
+        android:textColor="#0D0C0C" />
 
 </LinearLayout>

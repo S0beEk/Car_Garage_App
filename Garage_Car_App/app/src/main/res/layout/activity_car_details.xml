@@ -47,12 +47,15 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="8dp" />
+
     <Button
         android:id="@+id/buttonAddRepair"
-        android:text="Dodaj naprawę"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:backgroundTint="#FFC107"
+        android:text="Dodaj naprawę"
+        android:textColor="#3F51B5" />
 
 
     <TextView
@@ -69,12 +72,15 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="8dp" />
+
     <Button
         android:id="@+id/buttonAddInspection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:backgroundTint="#FFC107"
         android:text="Dodaj przegląd"
-        android:layout_margin="12dp" />
+        android:textColor="#3F51B5" />
 
 
 

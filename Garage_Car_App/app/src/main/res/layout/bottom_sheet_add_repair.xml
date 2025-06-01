@@ -8,27 +8,32 @@
 
     <EditText
         android:id="@+id/editDescription"
-        android:hint="Opis naprawy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Opis naprawy"
+        android:textColor="#3F51B5" />
 
     <EditText
         android:id="@+id/editDate"
-        android:hint="Data (np. 2024-05-01)"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Data (np. 2024-05-01)"
+        android:textColor="#3F51B5" />
 
     <EditText
         android:id="@+id/editCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="Koszt"
         android:inputType="numberDecimal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="#3F51B5" />
 
     <Button
         android:id="@+id/buttonSaveRepair"
-        android:text="Zapisz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFC107"
+        android:text="Zapisz"
+        android:textColor="#3F51B5" />
 </LinearLayout>

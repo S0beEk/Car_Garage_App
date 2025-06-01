@@ -11,6 +11,7 @@ import com.example.garage_car_app.adapter.CarAdapter;
 import com.example.garage_car_app.model.AppDatabase;
 import com.example.garage_car_app.model.Car;
 import com.example.garage_car_app.model.CarDao;
+import com.example.garage_car_app.util.ReminderScheduler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.room.Room;
@@ -28,7 +29,7 @@ public class CarListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_list);
 
-
+        ReminderScheduler.scheduleReminder(this);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
